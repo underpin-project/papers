@@ -1,0 +1,84 @@
+---
+title: Raising the role of Vocabulary Hubs for Semantic data interoperability in Dataspaces
+
+abstract: |
+  Dataspaces are an important enabler for industrial sharing data (either commercially licensed or private).
+  Europe is investing heavily into sectoral dataspaces, federation and orchestration platforms like SIMPL, Eclipse DSC, GXFS, etc.
+  Still, dataspaces enable shared data access, but do not solve the data interoperability problem.
+  For that, the consumer would like to see the data from different providers in a harmonized and semantically integrated data.
+  The Vocabulary Hub service (part of the IDSA RAM) provides a repository for ontologies and vocabularies.
+  We describe an approach of raising the role of the vocabulary hub to also allow richer metadata description (e.g. the meaning of every column in a tabular dataset),
+  and binding semantic descriptions to ingested datasets, thus providing on-the-fly data semantization and easing data querying.
+  This is achieved through the integration of two commercial semantic products (PoolParty and GraphDB),
+  leveraging the partnership between the Semantic Web Company and Ontotext,
+  and is being developed within the frame of the Digital Europe project UNDERPIN,
+  with applications to refinery and wind farm data.
+
+author:
+  - name: Martin Kaltenböck
+    email: martin.kaltenboeck@semantic-web.com
+  - name: Robert David
+    email: robert.david@semantic-web.com
+    orcid: 0000-0002-3244-5341
+    affiliation: 
+     name: The Semantic Web Company
+     country: Austria
+  - name: Vladimir Alexiev
+    email: vladimir.alexiev@ontotext.com
+    orcid: 0000-0001-7508-7428
+  - name: Petar Ivanov
+    email: petar.ivanov@ontotext.com
+    orcid: 0000-0001-8448-1005
+    affiliation: 
+      name: Ontotext
+      country: Bulgaria
+acm-metadata:
+  keywords:
+    - data spaces
+    - semantic interoperability
+    - semantic technologies
+    - ontologies
+    - vocabulary hub
+    - oil and gas
+    - renewable energy
+    - refineries
+    - windfarms
+  final: true
+  # acmart-options: sigconf, review
+  # copyright-year: 2024
+  # acm-year: 2024
+  copyright: acmcopyright
+  # doi: 
+  # conference-acronym: 
+  # conference-name: 
+  # conference-date: 
+  # conference-location: 
+  # isbn: 
+
+format:
+  acm-pdf:
+    keep-tex: true 
+bibliography: bibliography.bib
+
+---
+
+# Introduction
+Consolidating wind farm data in data spaces for training predictive maintenance ML - Use Case Description
+
+# Initial Situation
+In the UNDERPIN project, we face the challenge of training ML for predictive maintenance of wind farms. This scenario benefits from large amounts of training data. Such data can be provided by different partners who collaborate on this ML approach. We support this scenario by implementing a data space for wind farm data. Data spaces enable data sharing between trusted participants while keeping data sovereignty. However, for consolidating different data sets from participants, we need to establish a clear semantics and mapping for the data.
+
+# Approach and IT-Solution
+To tackle this problem, we introduce Semantic Web standards and technologies to model and process this data. Vocabularies and ontologies, specifically expressed using OWL, can represent such data with a clear semantics based on standards. Furthermore, we introduce GraphDB and PoolParty as two software components which implement these standards to process the data.
+
+The Wind Farm Ontology [@ikeresnaola-gonzalezWindFarmOntology2021] ...
+
+# Business Value and Benefits of the Semantic Solution
+When consolidating the data, we need to provide a method to automatically map and process it so this can be done efficiently on large data sets and/or regular updates in data spaces. The benefit provided should support the ML training in such a way that the consolidated data set is exposed as uniform training data set.
+
+# Prospects and Recommendations
+We provide a first prototype to implement our approach. Next steps are bringing it into the actual data space in practice and representing and integrating further data sets from different data space participants. Also, the ML should actually benefit regarding quality in practice, which still needs to be verified.
+
+# Conclusion
+
+# References
