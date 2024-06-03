@@ -20,8 +20,8 @@ author:
       name: Austrian Institute of Technology
       country: Austria
   - name: Petar Ivanov
-    email: 
-    orcid: 
+    email: petar.ivanov@ontotext.com
+    orcid: 0000-0001-8448-1005
   - name: Nikola Tulechki
     email: 
     orcid: 
