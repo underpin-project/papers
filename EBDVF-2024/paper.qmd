@@ -71,10 +71,53 @@ In the UNDERPIN project, we face the challenge of training ML for predictive mai
 # Approach and IT-Solution
 To tackle this problem, we introduce Semantic Web standards and technologies to model and process this data. Vocabularies and ontologies, specifically expressed using OWL, can represent such data with a clear semantics based on standards. Furthermore, we introduce GraphDB and PoolParty as two software components which implement these standards to process the data.
 
+## IDS Vocabulary Hub
+IDS defines the architecture of data spaces in the reference architecture model IDS-RAM. One of the defined architectural components, the Vocabulary Hub, has the role to provide vocabularies to annotate and describe data assets and services. These vocabularies form a common language to enable semantic interoperability among the data space participants. The Vocabulary Hub is responsible for resolving annotations of data assets and for providing details in the form of a standardized semantic descriptions. It supports the use of Semantic Web standards for defining and representing RDF vocabularies and ontologies and thereby provides semantic  interoperability in a standardized and machine-readable way.
+
+## GraphDB Graph Database
+tbd
+
+## PoolParty Semenatic Suite
+PoolParty Semantic Suite is a semantic middleware platform based on W3C standards, specifically the Semantic Web, which provides a wide variety of functionality in the area of knowledge graph management, graph-based NLP, semantic search and recommender systems.
+
+At the core of PoolParty is the Thesaurus Manager, which can be used to create and maintain RDF-based vocabularies, including ontologies, schemas and different kinds of knowledge models. These vocabularies can be applied for various use cases, from bridging data silos in enterprises by implementing data consolidation via the vocabularies, to annotating documents with semantic annotations to implement semantic search and recommendations which provide insights into data.
+
+PoolParty is well suited to form the basis of a vocabulary management system within a data space, effectively implementing not only the Vocabulary Hub role, but furthermore providing additional services which improve the expressivity of common vocabularies and automate semantic interoperability by intelligent data analysis.
+
+## The GraphDB Poolparty Integration
+The integration of GraphDB and PoolParty leverages synergies of a high-performance graph database with a platform for knowledge graph management.
+
+Both GraphDb and PoolParty are based on W3C recommendations like RDF, OWL and SPARQL. They therefore seamlessly integrate with each other, but also with other services and components in data spaces which support these machine-readable standards for semantic interoperability.
+
 The Wind Farm Ontology [@ikeresnaola-gonzalezWindFarmOntology2021] ...
 
 # Business Value and Benefits of the Semantic Solution
 When consolidating the data, we need to provide a method to automatically map and process it so this can be done efficiently on large data sets and/or regular updates in data spaces. The benefit provided should support the ML training in such a way that the consolidated data set is exposed as uniform training data set.
+
+## the Semantic Layer Approach
+The Vocabulary Hub, as IDS defines it in the IDS-RAM, is a basic building block to achieve semantic interoperability in data spaces by provisioning common vocabularies. We aim to go one step further and envision a Semantic Layer for data spaces, which provide vocabulary-based services for advanced and automated semantic descriptions of metadata and data. The Semantic Layer is implemented as services based on the GraphDB and PoolParty and provided as a one seamlessly integrated component.
+
+In the following, we discuss i) the services provided for the Vocabulary Hub role and ii) additional services as extensions to the Vocabulary Hub, which implement towards a Semantic Layer for data spaces.
+
+Vocabulary Hub Services:
+* RDF based: both GraphDB and PoolParty store and manage data based on the RDF data model. RDF is the basic building stone and underlying vocabulary definitions.
+* scalable storage of vocabularies: cluster implementation for higher throughput and a fault tolerant architecture.
+* knowledge graph management: easy management of vocabularies using a rich web user interface and integration via Web APIs. Vocabularies can be created and edited based on standards like SKOS and OWL, but also existing vocabularies can be reused and combined to fit specific needs of data spaces.
+* SPARQL service for semantic lookups: dereference of URIs describing data asset to retrieve a semantic description of the entity from the graph database.
+
+Semantic Layer Services:
+* we support both unstructured and structured data assets
++ unstructured data: semantic annotation services for documents based on concept tagging. PoolParty’s KG-based NLP  primarily uses SKOS taxonomies to identify concepts in documents, but can be extended with OWL ontology elements (classes, properties) for increased expressivity.
++ structured data: we support methods for structured data which can be decided based on the actual content in place, ranging from OWL ontologies for OBDA, linking SKOS concepts and
+- with OBDA for data spaces we support an ontology-based method which is well suited for data retrieval while keeping the original source in place. Ontologies for OBDA are intended to be governed via the Semantic Layer and can consolidate data assets of various formats using a precise mapping. Furthermore, it can be used to establish a fine-grained access control, thereby deciding for individual data elements if they should be exposed ot not.
+- R2RML mapping is intended for data transformation processes within a data space, where the original source is used as a basis to create an RDF representation.
+- SKOS concepts can also be used for structured data in several ways. Concepts can be directly added to RDF data via semantic links (properties from an ontology), they can be used to annotate specific literals of an RDF graph or they can be used to associate documents with (specific parts of) an RDF graph.
+* Inference services: we provide metadata expansions services based on interlinked vocabularies in combination with ontologies. This inference approach can be used with the semantic tagging for unstructured data as wells as the structured data approaches.
++ Inference tagging is provided by a PoolParty tagging service in combination with an expansion query for implementing the inferences. The query can be configured to work for various scenarios.
+* Vocabulary crossovers are a data modeling approach using interlinks from an ontology to relate
++ different vocabularies from similar or the same domains, which cover different areas or aspects of the domain. By relating concepts with each other using 1:1, 1:n and m:n relations, we can automatically expand the descriptions by traversing the interlinked graph.
++ different versions of the same vocabulary to automatically translate between those versions.
+* Metadata inference based on interlinked vocabularies is similar to crossovers, but intended to represent different levels of abstraction, so that we are able to infer from a more general vocabulary to a more specific vocabulary and vice versa. For example, we can start with DCAT themes vocabularies and link to further vocabularies, which are more specific for certain areas or which go more into detail.
 
 # Prospects and Recommendations
 We provide a first prototype to implement our approach. Next steps are bringing it into the actual data space in practice and representing and integrating further data sets from different data space participants. Also, the ML should actually benefit regarding quality in practice, which still needs to be verified.
