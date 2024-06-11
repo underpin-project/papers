@@ -12,4 +12,4 @@ paper.pdf: paper.qmd
 # (After each addition of a citation to that collection)
 # make bibliography.bib
 bibliography.bib::
-	curl http://127.0.0.1:23119/better-bibtex/export/collection?/3128938/HTMRCUW8.bibtex -o $@
+	curl http://127.0.0.1:23119/better-bibtex/export/collection?/3128938/DS4FVYLV.bibtex -o $@
