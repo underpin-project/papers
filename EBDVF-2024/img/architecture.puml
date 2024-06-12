@@ -50,6 +50,6 @@ GraphDB       <-   DataConsumer   : harmonized query\n(SPARQL)
 GraphDB       -->  Virtualization : NoETL\n(OBDA)
 Database      <--  Virtualization : SPARQL to SQL
 Database      <-   Mapping        : mapping/binding
-Mapping       <-   VocabularyHub  : semantic artefacts
+Mapping       <-   VocabularyHub  : semantic assets
 
 @enduml

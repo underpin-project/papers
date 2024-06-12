@@ -207,7 +207,36 @@ Semantic Layer Services support both unstructured and structured data assets:
   so that we are able to infer from a more general vocabulary to a more specific vocabulary and vice versa. 
   For example, we can start with DCAT themes vocabularies and link to further vocabularies, which are more specific for certain areas or which go into more detail.
 
-## Architecture and Implementation
+## Software Architecture
+
+The following figure shows the architecture of our approach:
+
+![](img/architecture.png)
+
+- A Data Provider sends data through the Connector, 
+  and at the same time provides basic metadata (DCAT)
+- Selected data can be stored in Database(s) managed by the dataspace,
+  for easier access and querying.
+  - For large-volume time series data, we recommend to use InfluxDB, PostgreSQL, Google BigQuery, etc.
+  - Of course, access control is very important here.
+    We'll leverage GraphDB's [Fine-grained Access Control](https://graphdb.ontotext.com/documentation/10.6/fine-grained-access-control.html), 
+    but access control in the time series database is also important
+  - Depending on Provider preferences and agreements, 
+    other data may stay at the source, 
+    and be delivered to the Consumer only dynamically through the Connector
+- The Vocabulary Hub stores relevant semantic assets: ontologies and thesauri.
+  These are added based on relevant use cases and datasets, following a dataspace governance process.
+- The Vocabulary Hub also stores mapping assets, such as OBDA or R2RML mappings and CSVW manifests.
+- PoolParty Semantic Integrator is used to edit, view and manage the semantic assets,
+  and to bind mapping assets to incoming data.
+- For virtual access to relational data, ONTOP is used to translate SPARQL to SQL dynamically
+  and to convert returned data to SPARQL result format.
+- The Data Consumer benefits from:
+  - More powerful dataset discovery by using richer semantic queries, eg
+    - "Give me all time series related to compressor C123" (equipment instance)
+    - "Give me all time series related to temperature" (measured quantity)
+    - "Give me all time series of bearings" (equipment kind or machine part)
+  - Harmonized querying of datasets from multiple providers.
 
 # Conclusion and Future Work
 We presented an approach for dynamically binding datasets to semantic descriptions in a dataspace's Vocabulary Hub,
