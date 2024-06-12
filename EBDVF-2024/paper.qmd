@@ -86,29 +86,48 @@ therefore enabling richer discovery and semantic data integration between datase
 # Projects and Use Cases
 In the expanding data economy landscape supported by dataspaces, 
 we are working on several projects which address practical data sharing needs and were we experience the importance of semantic interoperability to fulfill various use cases. 
-Here we present 3 examples from the [DataBri-X](https://databri-x.eu/) and [UNDERPIN](https://underpinproject.eu/) projects that cover various application domains.
-
-## Energy Dataspace
-In this use case, we run simulations for energy communities, which predict the behavior of the energy grid. 
-To provide precise predictions, there is the need of high amounts of example data. 
-This data is of numeric type and different tabular data sources need to be semantically consolidated.
-
-## Legal Dataspace
-Analyzing documents in the legal domain is a highly challenging task because of the complexity of legal information. 
-We provide recommender services for insights into corpora of legal documents
-that identify the meaning via a legal knowledge graph, NLP analysis and semantic annotations.
+our main focus to develop our solution is the [UNDERPIN](https://underpinproject.eu/) project with use cases of refineries and wind farms,
+but also other project, like [DataBri-X](https://databri-x.eu/) provide use cases which were considered.
 
 ## Manufacturing/Maintenance Dataspace
-Operating refineries and wind farms involves high maintenance costs. 
-Predicting potential failures and optimizing the maintenance operations to minimize the costs can be business-critical. 
+Operating refineries and wind farms involves high maintenance costs.
+Predicting potential failures and optimizing the maintenance operations to minimize the costs can be business-critical.
 For establishing predictive maintenance, we need high amounts of high quality training data
-that can be obtained by data consolidation across different refinery and wind farm measurement sources. 
+that can be obtained by data consolidation across different refinery and wind farm measurement sources.
 
 The UNDERPIN project addresses this problem by creating a dataspace for refineries, wind farms, and their equipment suppliers.
 Extensive time series data is exchanged, but their format and meaning is not standardized.
 Describing the meaning of these time series facilitates semantic interoperability between datasets from different providers.
 This description includes measured variable, quantity kind and unit of measure,
 which sensor took the measurements, what it is attached to, the detailed model and connectivity of that industrial equipment.
+
+### The Refinery Dataspace
+Refineries can be optimized regarding costs and efficiency by considering not only individual components,
+but the production chain as a connected system.
+In this use case, we aim to improve the maintenance process as well as the decision making for preventive maintenance
+so as to minimize the downtime and the impact on the production capabilities.
+
+### The Wind Farm Dataspace
+Operating wind farms involves high costs for maintaining the wind turbines.
+Predicting potential failures and optimizing the maintenance operations to minimize the costs can be business critical.
+For establishing predictive maintenance, we need high amounts of high qualitative training data,
+which can be achieved by consolidation different wind farm measurement sources.
+This use case provides different kinds of tabular data, where consolidation needs semantic harmonization of data.
+
+## Energy and Legal Dataspace
+Beyond the UNDERPIN project as the main use case provider, we also consider use cases from other projects.
+We present 2 examples from the DataBri-X project, which work on different content types of data and have different usage scenarios.
+We considered these as well when designing our solution to make it applicable to a broader range of use cases.
+
+### The Energy Dataspace
+In this use case, we run simulations for energy communities, which predict the behavior of the energy grid. 
+To provide precise predictions, there is the need of high amounts of example data. 
+This data is of numeric type and different tabular data sources need to be semantically consolidated.
+
+### The Legal Dataspace
+Analyzing documents in the legal domain is a highly challenging task because of the complexity of legal information. 
+We provide recommender services for insights into corpora of legal documents
+that identify the meaning via a legal knowledge graph, NLP analysis and semantic annotations.
 
 ## The Problem
 "Standard" dataspace solutions provide access to data, but do not typically address the data integration problem.
@@ -241,11 +260,11 @@ The following figure shows the architecture of our approach:
 # Conclusion and Future Work
 We presented an approach for dynamically binding datasets to semantic descriptions in a dataspace's Vocabulary Hub,
 therefore facilitating data harmonization and easier data consumption.
-We have implemented a first prototype of our approach. 
+We have implemented a first prototype of our approach, which builds on the integration of GraphDB and PoolParty.
 
 The next steps include:
 - Bringing it into an actual dataspace in practice, representing and integrating datasets from different dataspace participants.
-- Implementing use cases for richer discoverability and harmonized querying.
+- Implementing use cases for richer discoverability, harmonized querying and support for different content types of structured and unstructured data.
 Also, the ML should actually benefit regarding quality in practice, which still needs to be verified.
 
 # Acknowledgements
