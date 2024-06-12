@@ -130,12 +130,12 @@ We provide recommender services for insights into corpora of legal documents
 that identify the meaning via a legal knowledge graph, NLP analysis and semantic annotations.
 
 ## The Problem
-"Standard" dataspace solutions provide access to data, but do not typically address the data integration problem.
+"Standard" dataspace solutions provide access to data and metadata descriptions, but they do not typically address the data integration problem.
 If a consumer wants to consume datasets from different providers in an integrated way, 
 they need to harmonize the data to some common model, convert it, store it in a database, 
 and potentially implement entity linking (correlation of different records that are about the same real-world thing) and data fusion.
 
-Above we gave just 3 examples to illustrate the heterogeneity of data in the context of different use cases. 
+Above we gave just 4 examples to illustrate the heterogeneity of data in the context of different use cases.
 We aim to develop solutions that not only fulfill the dataspace needs, 
 but also improve the situation regarding semantic interoperability by providing services that can be easily leveraged to implement such use cases.
 
@@ -145,8 +145,9 @@ Vocabularies and ontologies (expressed using RDFS, OWL and SKOS) can represent d
 We leverage GraphDB and PoolParty as two software components that implement these standards to process the data.
 
 ## IDS Vocabulary Hub
-IDSA defines the architecture of dataspaces in the reference architecture model IDS RAM. 
-One of the defined architectural components, the Vocabulary Hub, has the role to provide vocabularies to annotate and describe data assets and services. 
+In this paper, we focus on the IDSA approach to dataspaces.
+IDSA defines the architecture of dataspaces in the reference architecture model IDS-RAM (current version 4).
+One of the defined architectural components, the Vocabulary Hub, has the role to provide vocabularies to annotate and describe data assets and services.
 These vocabularies form a common language to enable semantic interoperability among the dataspace participants. 
 The Vocabulary Hub is responsible for resolving annotations of data assets and for providing details in the form of standardized semantic descriptions. 
 It supports the use of Semantic Web standards for defining and representing RDF vocabularies and ontologies 
