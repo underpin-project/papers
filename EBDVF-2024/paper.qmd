@@ -261,11 +261,13 @@ The following figure shows the architecture of our approach:
 We presented an approach for dynamically binding datasets to semantic descriptions in a dataspace's Vocabulary Hub,
 therefore facilitating data harmonization and easier data consumption.
 We have implemented a first prototype of our approach, which builds on the integration of GraphDB and PoolParty.
+As next steps, we will bring this solution into use cases and into broader discussion to gain insight and develop it further.
 
 The next steps include:
-- Bringing it into an actual dataspace in practice, representing and integrating datasets from different dataspace participants.
+- Bringing it into actual dataspaces in practice, representing and integrating datasets from different dataspace participants.
 - Implementing use cases for richer discoverability, harmonized querying and support for different content types of structured and unstructured data.
-Also, the ML should actually benefit regarding quality in practice, which still needs to be verified.
+- Explore how ML can benefit regarding quality in practice when providing consolidated and cleaned data via dataspaces.
+- Discuss how we can extend the IDS-RAM with services to improve the support for semantic interoperability provided by our solution.
 
 # Acknowledgements
 This work is partially supported by the Digital Europe programme project [UNDERPIN](https://underpinproject.eu/) (grant agreement 101123179)
