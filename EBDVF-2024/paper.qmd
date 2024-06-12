@@ -210,7 +210,8 @@ Semantic Layer Services support both unstructured and structured data assets:
 ## Architecture and Implementation
 
 # Conclusion and Future Work
-We presented an approach for dynamically binding dataspace datasets
+We presented an approach for dynamically binding datasets to semantic descriptions in a dataspace's Vocabulary Hub,
+therefore facilitating data harmonization and easier data consumption.
 We have implemented a first prototype of our approach. 
 
 The next steps include:
