@@ -1,0 +1,55 @@
+﻿@startuml
+hide circle
+hide empty members
+skinparam defaultTextAlignment center
+
+object "Data Provider" as DataProvider {
+  <img:csv.png{scale=0.3}>
+}
+
+object "Data Consumer" as DataConsumer {
+}
+
+object Connector {
+  <img:idsa.png{scale=0.3}>
+}
+
+object "Vocabulary Hub" as VocabularyHub {
+  RDFS, OWL, SKOS\n
+  <img:owl.png{scale=0.3}><img:skos.png{scale=0.7}>
+}
+
+object "Semantic Integrator" as PoolParty {
+  <img:poolparty.png>
+}
+
+object "Semantic Database" as GraphDB {
+  <img:graphdb.png>
+}
+
+object Database {
+  <img:influxdb.png{scale=0.5}>
+  <img:postgresql.png{scale=0.5}>
+}
+
+object Virtualization {
+  <img:ontop.png{scale=0.5}>
+}
+
+object "Semantic Mapping" as Mapping {
+  OBDA, R2RML, CSVW
+  <img:r2rml.png{scale=0.3}>
+}
+
+DataProvider  ->   Connector
+Connector     -->  Database       : data
+Connector     ->   GraphDB        : metadata\n(DCAT)
+VocabularyHub <->  PoolParty      : edit/view
+GraphDB       <--> VocabularyHub  : store/retrieve
+GraphDB       <-   DataConsumer   : harmonized query\n(SPARQL)
+GraphDB       -->  Virtualization : NoETL\n(OBDA)
+Database      <--  Virtualization : SPARQL to SQL
+Database      <-   Mapping        : mapping/binding
+Mapping       <-   VocabularyHub  : semantic artefacts
+
+@enduml
