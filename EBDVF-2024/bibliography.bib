@@ -71,6 +71,21 @@
   langid = {american}
 }
 
+@inproceedings{bagosiOntopFrameworkOntology2014,
+  title = {The {{Ontop Framework}} for {{Ontology Based Data Access}}},
+  booktitle = {The {{Semantic Web}} and {{Web Science}}},
+  author = {Bagosi, Timea and Calvanese, Diego and Hardi, Josef and {Komla-Ebri}, Sarah and Lanti, Davide and Rezk, Martin and {Rodr{\'i}guez-Muro}, Mariano and Slusnys, Mindaugas and Xiao, Guohui},
+  editor = {Zhao, Dongyan and Du, Jianfeng and Wang, Haofen and Wang, Peng and Ji, Donghong and Pan, Jeff Z.},
+  year = {2014},
+  pages = {67--77},
+  publisher = {Springer},
+  address = {Berlin, Heidelberg},
+  doi = {10.1007/978-3-662-45495-4_6},
+  abstract = {Ontology Based Data Access (OBDA)~[4] is a paradigm of accessing data trough a conceptual layer. Usually, the conceptual layer is expressed in the form of an RDF(S)~[10] or OWL~[15] ontology, and the data is stored in relational databases.},
+  isbn = {978-3-662-45495-4},
+  langid = {english}
+}
+
 @techreport{IDSARAMVocabulary2024,
   title = {{{IDSA RAM}} 4: {{Vocabulary Hub}}},
   year = {2024},
@@ -102,6 +117,40 @@
   abstract = {Learn how data spaces, being a mechanism to enable efficient commercial data exchange can significantly benefit from the use of Linked Data at the level of data itself},
   howpublished = {Ontotext blog post},
   keywords = {Data Spaces,Knowledge Graphs,Semantic Data Spaces}
+}
+
+@misc{RMLIntroduction2024,
+  title = {{{RML Introduction}} {\textbar}},
+  year = {2024},
+  journal = {RML.io},
+  urldate = {2024-06-12},
+  abstract = {The RDF Mapping language (RML) is a generic scalable mapping language defined to express rules that map data in heterogeneous structures and serializations to the RDF data model. RML deals with the mapping definitions in a uniform, modular, interoperable and extensible fashion. RML is defined as a superset of the W3C-recommended mapping language, R2RML, that maps data in relational databases to RDF. In RML, the mapping of data to the RDF data model is based on one or more Triples Maps that defines how the triples will be generated.},
+  howpublished = {https://rml.io/docs/rml/introduction/}
+}
+
+@techreport{souripriyadasR2RMLRDBRDF2012,
+  type = {{{W3C Recommendation}}},
+  title = {{{R2RML}}: {{RDB}} to {{RDF Mapping Language}}},
+  author = {{Souripriya Das} and {Seema Sundara} and {Richard Cyganiak}},
+  year = {2012},
+  month = sep,
+  urldate = {2024-06-12},
+  abstract = {This document describes R2RML, a language for expressing customized mappings from relational databases to RDF datasets. Such mappings provide the ability to view existing relational data in the RDF data model, expressed in a structure and target vocabulary of the mapping author's choice. R2RML mappings are themselves RDF graphs and written down in Turtle syntax. R2RML enables different types of mapping implementations. Processors could, for example, offer a virtual SPARQL endpoint over the mapped relational data, or generate RDF dumps, or offer a Linked Data interface.}
+}
+
+@misc{stornebrinkmichielVocabularyHubSemantic2023,
+  title = {Vocabulary {{Hub}} for Semantic Interoperability in Data Spaces},
+  author = {Stornebrink, Michiel},
+  year = {2023}
+}
+
+@misc{swirrlCSVWStandards2024,
+  title = {{{CSVW}} - {{Standards}}},
+  author = {{Swirrl}},
+  year = {2024},
+  urldate = {2024-06-12},
+  abstract = {CSVW is a standard for describing and clarifying the content of CSV tables This site explains CSVW and suggests some tools you can use for working with it. The Core CSVW Specification The CSVW specification is quite deep, building on multiple standards. It can be quite overwhelming to read from start to finish. This page provides an overview to help you find the parts most relevant to your interests. The CSVW syntax specification describes a data model for tabular data. That is to say, it defines that a table is a collection of cells arranged into columns and rows. It also describes how to annotate a table with a metadata file to help processors parse and interpret the contents. The schema for the metadata file is provided by the CSVW metadata vocabulary. The vocabulary defines the properties that can be used in an annotation. This includes things like a schema of column descriptions, datatypes and foreign key relations. CSVW also defines how a table may be translated into RDF via the csv2rdf procedure or into JSON via the csv2json procedure.},
+  howpublished = {https://csvw.org/standards.html}
 }
 
 @techreport{woutervandenbergSemanticInteroperabilityData2024,
