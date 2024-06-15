@@ -178,7 +178,7 @@ Eclipse DSC, GXFS, etc. Still, dataspaces enable shared data access, but
 do not solve the data interoperability problem. For that, the consumer
 would like to see the data from different providers in a harmonized and
 semantically integrated form. The Vocabulary Hub service (part of the
-IDSA RAM) provides a repository for ontologies and vocabularies. We
+IDS RAM) provides a repository for ontologies and vocabularies. We
 describe an approach of raising the role of the vocabulary hub to also
 allow richer metadata description (e.g.~the meaning of every column in a
 tabular dataset), and binding semantic descriptions to ingested
@@ -343,12 +343,12 @@ software components that implement these standards to process the data.
 \subsection{IDS Vocabulary Hub}\label{ids-vocabulary-hub}
 
 In this paper, we focus on the IDSA approach to dataspaces. IDSA defines
-the architecture of dataspaces in the reference architecture model
-IDS-RAM (current version 4). One of the defined architectural
-components, the Vocabulary Hub, has the role of providing vocabularies
-to annotate and describe data assets and services. These vocabularies
-form a common language to enable semantic interoperability among the
-dataspace participants. The Vocabulary Hub is responsible for resolving
+the architecture of dataspaces in the reference architecture model IDS
+RAM (current version 4). One of the defined architectural components,
+the Vocabulary Hub, has the role of providing vocabularies to annotate
+and describe data assets and services. These vocabularies form a common
+language to enable semantic interoperability among the dataspace
+participants. The Vocabulary Hub is responsible for resolving
 annotations of data assets and for providing details in the form of
 standardized semantic descriptions. It supports the use of Semantic Web
 standards for defining and representing RDF vocabularies and ontologies
@@ -356,13 +356,13 @@ and thereby provides semantic interoperability in a standardized and
 machine-readable way.
 
 The Vocabulary Hub is one of the core components of any dataspace not
-only those designed in accordance with IDS-RAM. Other reference
+only those designed in accordance with IDS RAM. Other reference
 architecture models, such as GAIA-X architecture document 22.10 Release
 \citep{GaiaXArchitectureDocument2022} and Fraunhofer's Reference
 Architecture Model for the Industrial Data Space
 \citep{ReferenceArhictectureModel2017} also describe components with a
 similar role - the Federated Catalogue and Broker Service, respectively.
-Therefore, our approach designed around the IDS-RAM is adaptable and
+Therefore, our approach designed around the IDS RAM is adaptable and
 applicable to data spaces designed in accordance with other reference
 architecture models.
 
@@ -427,11 +427,11 @@ uniform training dataset.
 
 \subsection{Semantic Layer Approach}\label{semantic-layer-approach}
 
-The Vocabulary Hub, as IDS defines it in the IDS-RAM, is a basic
+The Vocabulary Hub, as IDS defines it in the IDS RAM, is a basic
 building block to achieve semantic interoperability in dataspaces by
 provisioning common vocabularies. Those vocabularies are to be expressed
 in RDF and by syntactically compatible with OWL to allow for expressive
-semantics. The IDS-RAM does not require, but nonetheless allows for,
+semantics. The IDS RAM does not require, but nonetheless allows for,
 extending the function of the Vocabulary hub towards providing ontology
 mappings \citep{FunctionalLayerIDSRAM2023b}, which would enable
 dataspace connectors to automatically convert data between user-specific
@@ -663,7 +663,7 @@ The next steps include:
   Explore how ML can benefit regarding quality in practice when
   providing consolidated and cleaned data via dataspaces.
 \item
-  Discuss how we can extend the IDS-RAM with services to improve the
+  Discuss how we can extend the IDS RAM with services to improve the
   support for semantic interoperability provided by our solution.
 \end{itemize}
 
