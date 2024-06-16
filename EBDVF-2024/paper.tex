@@ -179,7 +179,7 @@ do not solve the data interoperability problem. For that, the consumer
 would like to see the data from different providers in a harmonized and
 semantically integrated form. The Vocabulary Hub service (part of the
 IDS RAM) provides a repository for ontologies and vocabularies. We
-describe an approach of raising the role of the vocabulary hub to also
+describe an approach of raising the role of the Vocabulary Hub to also
 allow richer metadata description (e.g.~the meaning of every column in a
 tabular dataset), and binding semantic descriptions to ingested
 datasets, thus providing on-the-fly data semantization and easing data
@@ -363,9 +363,9 @@ machine-readable way.
 
 Other architecture reference models, such as the GAIA-X Architecture
 \citep{GaiaXArchitectureDocument2022} describe components with a similar
-role: the Federated Catalogue and Broker Service. Therefore our approach
-is adaptable and applicable to dataspaces designed in accordance with
-other reference architecture models as well.
+role, namely the Federated Catalogue. Therefore our approach is
+adaptable and applicable to dataspaces designed in accordance with other
+reference architecture models as well.
 
 \subsection{GraphDB Graph Database}\label{graphdb-graph-database}
 
@@ -388,7 +388,7 @@ variety of research projects, from astronomy to zoology
 
 \subsection{PoolParty Semantic Suite}\label{poolparty-semantic-suite}
 
-\href{PoolParty\%20Semantic\%20Suite}{PoolParty Semantic Suite} is a
+\href{https://www.poolparty.biz/}{PoolParty Semantic Suite} is a
 semantic middleware platform based on W3C Semantic Web standards that
 provides a wide variety of functionality in the area of knowledge graph
 management, graph-based NLP, semantic search and recommender systems.
@@ -447,9 +447,17 @@ description of metadata and data. The Semantic Layer is implemented as
 services based on the GraphDB and PoolParty and provided as a one
 seamlessly integrated component.
 
-In the following, we discuss i) the services provided for the Vocabulary
-Hub component and ii) additional services as Vocabulary Hub extensions
-that implement a Semantic Layer for dataspaces.
+In the following, we discuss
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\tightlist
+\item
+  the services provided for the Vocabulary Hub component and
+\item
+  additional services as Vocabulary Hub extensions that implement a
+  Semantic Layer for dataspaces.
+\end{enumerate}
 
 Vocabulary Hub Services:
 
@@ -608,12 +616,28 @@ The following figure shows the architecture of our approach:
   result format.
 \end{itemize}
 
-The Data Consumer benefits from: - More powerful dataset discovery by
-using richer semantic queries, e.g. - ``Give me all time series related
-to compressor C123'' (equipment instance) - ``Give me all time series
-related to temperature'' (measured quantity) - ``Give me all time series
-of bearings'' (equipment kind or machine part) - Harmonized querying of
-datasets from multiple providers.
+The Data Consumer benefits from:
+
+\begin{itemize}
+\tightlist
+\item
+  More powerful dataset discovery by using richer semantic queries, e.g.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``Give me all time series related to compressor C123'' (equipment
+    instance)
+  \item
+    ``Give me all time series related to temperature'' (measured
+    quantity)
+  \item
+    ``Give me all time series of bearings'' (equipment kind or machine
+    part)
+  \end{itemize}
+\item
+  Harmonized querying of datasets from multiple providers.
+\end{itemize}
 
 \section{Conclusion and Future Work}\label{conclusion-and-future-work}
 

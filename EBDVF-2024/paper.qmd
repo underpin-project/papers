@@ -28,7 +28,7 @@ abstract: |
   Still, dataspaces enable shared data access, but do not solve the data interoperability problem.
   For that, the consumer would like to see the data from different providers in a harmonized and semantically integrated form.
   The Vocabulary Hub service (part of the IDS RAM) provides a repository for ontologies and vocabularies.
-  We describe an approach of raising the role of the vocabulary hub to also allow richer metadata description (e.g. the meaning of every column in a tabular dataset),
+  We describe an approach of raising the role of the Vocabulary Hub to also allow richer metadata description (e.g. the meaning of every column in a tabular dataset),
   and binding semantic descriptions to ingested datasets, thus providing on-the-fly data semantization and easing data querying.
   This is achieved through the integration of two commercial semantic products (PoolParty and GraphDB),
   leveraging the partnership between the Semantic Web Company and Ontotext,
@@ -154,8 +154,8 @@ It supports the use of Semantic Web standards for defining and representing RDF 
 and thereby provides semantic interoperability in a standardized and machine-readable way.
 
 Other architecture reference models, such as the GAIA-X Architecture [@GaiaXArchitectureDocument2022] 
-describe components with a similar role: the Federated Catalogue and Broker Service.
-Therefore our approach  is adaptable and applicable to dataspaces designed in accordance with other reference architecture models as well.
+describe components with a similar role, namely the Federated Catalogue.
+Therefore our approach is adaptable and applicable to dataspaces designed in accordance with other reference architecture models as well.
 
 ## GraphDB Graph Database
 [Ontotext GraphDB](https://graphdb.ontotext.com/) is a highly efficient, scalable and robust graph database with RDF and SPARQL support.
@@ -169,7 +169,7 @@ In addition to numerous commercial projects,
 GraphDB has been used for a variety of research projects, from astronomy to zoology [@alexievDiverseUsesSemantic2021].
 
 ## PoolParty Semantic Suite
-[PoolParty Semantic Suite](PoolParty Semantic Suite) is a semantic middleware platform based on W3C Semantic Web standards 
+[PoolParty Semantic Suite](https://www.poolparty.biz/) is a semantic middleware platform based on W3C Semantic Web standards 
 that provides a wide variety of functionality in the area of knowledge graph management, graph-based NLP, semantic search and recommender systems.
 
 At the core of PoolParty is the Thesaurus Manager that is used to create and maintain RDF-based vocabularies (thesauri and ontologies), 
@@ -206,6 +206,7 @@ that provides vocabulary-based services for advanced and automated semantic desc
 The Semantic Layer is implemented as services based on the GraphDB and PoolParty and provided as a one seamlessly integrated component.
 
 In the following, we discuss
+
 i) the services provided for the Vocabulary Hub component and
 ii) additional services as Vocabulary Hub extensions that implement a Semantic Layer for dataspaces.
 
@@ -279,6 +280,7 @@ The following figure shows the architecture of our approach:
   and to convert returned data to SPARQL result format.
 
 The Data Consumer benefits from:
+
 - More powerful dataset discovery by using richer semantic queries, e.g.
   - "Give me all time series related to compressor C123" (equipment instance)
   - "Give me all time series related to temperature" (measured quantity)
