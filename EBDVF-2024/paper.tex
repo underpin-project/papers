@@ -149,7 +149,7 @@ energy, refineries, windfarms},
 \title{Raising the Role of Vocabulary Hubs for Semantic Data
 Interoperability in Dataspaces}
 \author[1]{Robert David%
-%
+\corref{cor1}%
 }
  \ead{robert.david@semantic-web.com} 
 \author[2]{Petar Ivanov%
@@ -157,7 +157,7 @@ Interoperability in Dataspaces}
 }
  \ead{petar.ivanov@ontotext.com} 
 \author[2]{Vladimir Alexiev%
-%
+\corref{cor1}%
 }
  \ead{vladimir.alexiev@ontotext.com} 
 
@@ -192,6 +192,13 @@ applications to refinery and wind farm data.
 
 
 
+\begin{highlights}
+\item The Vocabulary Hub is used in a dataspace to hold semantic
+vocabularies (ontologies and thesauri).\item Proposes and implements a
+Semantic Layers architecture that allows binding semantic vocabularies
+to incoming datasets.\item Uses semantic mapping languages (OBDA, R2RML,
+CSVW) to harmonize datasets dynamically.
+\end{highlights}
 
 
 \begin{keyword}
@@ -342,12 +349,11 @@ software components that implement these standards to process the data.
 
 \subsection{IDS Vocabulary Hub}\label{ids-vocabulary-hub}
 
-In this paper, we focus on the IDSA approach to dataspaces. IDSA defines
-the architecture of dataspaces in the reference architecture model IDS
-RAM (current version 4). One of the defined architectural components,
-the Vocabulary Hub, has the role of providing vocabularies to annotate
-and describe data assets and services. These vocabularies form a common
-language to enable semantic interoperability among the dataspace
+IDSA defines the dataspace architecture in the IDS RAM
+\citep{IDSRAM2024}. The Vocabulary Hub is one of the defined
+architectural components that provides vocabularies to annotate and
+describe data assets and services. These vocabularies form a common
+language to enable semantic interoperability among dataspace
 participants. The Vocabulary Hub is responsible for resolving
 annotations of data assets and for providing details in the form of
 standardized semantic descriptions. It supports the use of Semantic Web
@@ -355,48 +361,45 @@ standards for defining and representing RDF vocabularies and ontologies
 and thereby provides semantic interoperability in a standardized and
 machine-readable way.
 
-The Vocabulary Hub is one of the core components of any dataspace not
-only those designed in accordance with IDS RAM. Other reference
-architecture models, such as GAIA-X architecture document 22.10 Release
-\citep{GaiaXArchitectureDocument2022} and Fraunhofer's Reference
-Architecture Model for the Industrial Data Space
-\citep{ReferenceArhictectureModel2017} also describe components with a
-similar role - the Federated Catalogue and Broker Service, respectively.
-Therefore, our approach designed around the IDS RAM is adaptable and
-applicable to data spaces designed in accordance with other reference
-architecture models.
+Other architecture reference models, such as the GAIA-X Architecture
+\citep{GaiaXArchitectureDocument2022} describe components with a similar
+role: the Federated Catalogue and Broker Service. Therefore our approach
+is adaptable and applicable to dataspaces designed in accordance with
+other reference architecture models as well.
 
 \subsection{GraphDB Graph Database}\label{graphdb-graph-database}
 
-Ontotext GraphDB is a highly efficient, scalable and robust graph
-database with RDF and SPARQL support. It also offers data virtualization
-capabilities which enable direct access using SPARQL to relational
-databases, eliminating the need to replicate data. It can perform
-semantic inferencing at scale, which enables deriving new semantic facts
-from existing facts.
-
-GraphDB handles massive loads, queries, and inferencing in real time.
-Reasoning and query evaluation are performed over a persistent storage
-layer. Loading, reasoning, and query evaluation are executed extremely
-fast even against huge ontologies and knowledge bases. According to the
+\href{https://graphdb.ontotext.com/}{Ontotext GraphDB} is a highly
+efficient, scalable and robust graph database with RDF and SPARQL
+support. It also offers data virtualization capabilities that enable
+direct SPARQL access to relational databases, eliminating the need to
+replicate data. It can perform semantic reasoning at scale and supports
+both incremental inference when triples are inserted, and retraction
+when triples are deleted. GraphDB handles massive semantic data loads,
+queries, and inferencing. Reasoning and query evaluation are performed
+over a persistent storage layer. According to the
 \href{https://ldbcouncil.org/benchmarks/spb/}{LDBC Semantic Publishing
-Benchmark}, it is one of the most scalable OWL repositories currently
-available.
+Benchmark}, GraphDB is one of the most scalable OWL repositories
+currently available.
+
+In addition to numerous commercial projects, GraphDB has been used for a
+variety of research projects, from astronomy to zoology
+\citep{alexievDiverseUsesSemantic2021}.
 
 \subsection{PoolParty Semantic Suite}\label{poolparty-semantic-suite}
 
-PoolParty Semantic Suite is a semantic middleware platform based on W3C
-standards, specifically the Semantic Web, which provides a wide variety
-of functionality in the area of knowledge graph management, graph-based
-NLP, semantic search and recommender systems.
+\href{PoolParty\%20Semantic\%20Suite}{PoolParty Semantic Suite} is a
+semantic middleware platform based on W3C Semantic Web standards that
+provides a wide variety of functionality in the area of knowledge graph
+management, graph-based NLP, semantic search and recommender systems.
 
-At the core of PoolParty is the Thesaurus Manager, which can be used to
-create and maintain RDF-based vocabularies, including ontologies,
-schemas and different kinds of knowledge models. These vocabularies can
-be applied for various use cases, from bridging data silos in
-enterprises by implementing data consolidation via the vocabularies, to
-annotating documents with semantic annotations to implement semantic
-search and recommendations which provide insights into data.
+At the core of PoolParty is the Thesaurus Manager that is used to create
+and maintain RDF-based vocabularies (thesauri and ontologies), schemas
+and different kinds of knowledge models. These vocabularies can be
+applied for various use cases, from bridging data silos in enterprises
+by implementing data consolidation via the vocabularies, to annotating
+documents with semantic annotations to implement semantic search and
+recommendations which provide insights into data.
 
 PoolParty is well suited to form the basis of a vocabulary management
 system within a dataspace, effectively implementing not only the
@@ -408,12 +411,12 @@ interoperability.
 Integration}\label{the-graphdb-poolparty-integration}
 
 The integration of GraphDB and PoolParty leverages synergies of a
-high-performance graph database with a platform for knowledge graph
-management.
+high-performance graph database with a knowledge graph management
+platform.
 
-Both GraphDB and PoolParty are based on W3C recommendations like RDF,
-OWL and SPARQL. They therefore seamlessly integrate with each other, but
-also with other services and components in dataspaces which support
+Both GraphDB and PoolParty are based on W3C recommendations (RDF, RDFS,
+OWL, SPARQL etc). They therefore seamlessly integrate with each other,
+but also with other services and components in dataspaces which support
 these machine-readable standards for semantic interoperability.
 
 \section{A Semantic Solution and its
@@ -427,35 +430,26 @@ uniform training dataset.
 
 \subsection{Semantic Layer Approach}\label{semantic-layer-approach}
 
-The Vocabulary Hub, as IDS defines it in the IDS RAM, is a basic
-building block to achieve semantic interoperability in dataspaces by
-provisioning common vocabularies. Those vocabularies are to be expressed
-in RDF and by syntactically compatible with OWL to allow for expressive
-semantics. The IDS RAM does not require, but nonetheless allows for,
-extending the function of the Vocabulary hub towards providing ontology
-mappings \citep{FunctionalLayerIDSRAM2023b}, which would enable
-dataspace connectors to automatically convert data between user-specific
-and standard data formats. Such automatic conversions are to be
-performed by Data Tranformation Apps by either the Data Consumers, the
-Data Providers, or both.
+The Vocabulary Hub is defined in the IDS RAM as a basic building block
+to achieve semantic interoperability in dataspaces by provisioning
+common vocabularies. Vocabularies are expressed in RDF and use RDFS and
+OWL for ontologies, and SKOS for thesauri. The IDS RAM does not require,
+but nonetheless allows extending the function of the Vocabulary Hub
+towards providing ontology mappings \citep{IDSARAMFunctional2023} that
+enable dataspace connectors to automatically convert data between
+user-specific and standard data formats. Such automatic conversions can
+be performed by Data Tranformation Apps by the Data Consumer, the Data
+Provider, or both.
 
-We aim to achieve this through a Semantic Layer for dataspaces, which
+We aim to achieve this through a Semantic Layer for dataspaces that
 provides vocabulary-based services for advanced and automated semantic
-descriptions of metadata and data. The Semantic Layer is implemented as
+description of metadata and data. The Semantic Layer is implemented as
 services based on the GraphDB and PoolParty and provided as a one
 seamlessly integrated component.
 
-In the following, we discuss
-
-\begin{enumerate}
-\def\labelenumi{\roman{enumi})}
-\tightlist
-\item
-  the services provided for the Vocabulary Hub component and
-\item
-  additional services as Vocabulary Hub extensions that implement a
-  Semantic Layer for dataspaces.
-\end{enumerate}
+In the following, we discuss i) the services provided for the Vocabulary
+Hub component and ii) additional services as Vocabulary Hub extensions
+that implement a Semantic Layer for dataspaces.
 
 Vocabulary Hub Services:
 
@@ -612,31 +606,14 @@ The following figure shows the architecture of our approach:
   For virtual access to relational data, ONTOP is used to translate
   SPARQL to SQL dynamically and to convert returned data to SPARQL
   result format.
-\item
-  The Data Consumer benefits from:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    More powerful dataset discovery by using richer semantic queries,
-    e.g.
-
-    \begin{itemize}
-    \tightlist
-    \item
-      ``Give me all time series related to compressor C123'' (equipment
-      instance)
-    \item
-      ``Give me all time series related to temperature'' (measured
-      quantity)
-    \item
-      ``Give me all time series of bearings'' (equipment kind or machine
-      part)
-    \end{itemize}
-  \item
-    Harmonized querying of datasets from multiple providers.
-  \end{itemize}
 \end{itemize}
+
+The Data Consumer benefits from: - More powerful dataset discovery by
+using richer semantic queries, e.g. - ``Give me all time series related
+to compressor C123'' (equipment instance) - ``Give me all time series
+related to temperature'' (measured quantity) - ``Give me all time series
+of bearings'' (equipment kind or machine part) - Harmonized querying of
+datasets from multiple providers.
 
 \section{Conclusion and Future Work}\label{conclusion-and-future-work}
 

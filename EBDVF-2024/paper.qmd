@@ -4,22 +4,24 @@ author:
   - name: Robert David
     email: robert.david@semantic-web.com
     orcid: 0000-0002-3244-5341
-    affiliations: 
-        - id: swc
-          name: The Semantic Web Company
-          country: Austria
+    corresponding: true
+    affiliations:
+      - id: swc
+        name: The Semantic Web Company
+        country: Austria
   - name: Petar Ivanov
     email: petar.ivanov@ontotext.com
     orcid: 0000-0001-8448-1005
-    affiliations: 
-        - id: onto
-          name: Ontotext
-          country: Bulgaria
+    affiliations:
+      - id: onto
+        name: Ontotext
+        country: Bulgaria
   - name: Vladimir Alexiev
     email: vladimir.alexiev@ontotext.com
     orcid: 0000-0001-7508-7428
+    corresponding: true
     affiliations:
-        - ref: onto
+      - ref: onto
 abstract: |
   Dataspaces are an important enabler for industrial sharing data (either commercially licensed or private).
   Europe is investing heavily into sectoral dataspaces, federation and orchestration platforms like SIMPL, Eclipse DSC, GXFS, etc.
@@ -32,7 +34,7 @@ abstract: |
   leveraging the partnership between the Semantic Web Company and Ontotext,
   and is being developed within the frame of the Digital Europe project UNDERPIN,
   with applications to refinery and wind farm data.
-keywords: 
+keywords:
   - dataspaces
   - semantic interoperability
   - semantic technologies
@@ -42,199 +44,213 @@ keywords:
   - renewable energy
   - refineries
   - windfarms
+journal:
+  highlights: # This makes a first page only with the Elsevier highlights: maybe we should remove it
+    - The Vocabulary Hub is used in a dataspace to hold semantic vocabularies (ontologies and thesauri).
+    - Proposes and implements a Semantic Layers architecture that allows binding semantic vocabularies to incoming datasets.
+    - Uses semantic mapping languages (OBDA, R2RML, CSVW) to harmonize datasets dynamically.
 date: last-modified
 bibliography: bibliography.bib
 format:
   elsevier-pdf:
     keep-tex: true
     journal:
-      name: Workshop on Semantic Interoperability in Data Spaces 
+      name: Workshop on Semantic Interoperability in Data Spaces
       formatting: preprint
       model: 3p
       cite-style: super
 ---
 
 # Introduction
-The European data economy heavily depends on the availability of data and the technological foundation to make use of it. 
-Different industries and communities can benefit mutually by sharing data with each other, thereby supporting their digitization business goals. 
-Machine-learning systems heavily rely on high volumes of high-quality training data. 
-Examples are the well-known mobility dataspace and use cases like energy communities for running simulations. 
-To cope with the challenge of data sharing, Dataspace approaches like the IDS Reference Architecture Model (IDS RAM) were introduced to not only solve the technical aspects of data sharing, 
+The European data economy heavily depends on the availability of data and the technological foundation to make use of it.
+Different industries and communities can benefit mutually by sharing data with each other, thereby supporting their digitization business goals.
+Machine-learning systems heavily rely on high volumes of high-quality training data.
+Examples are the well-known mobility dataspace and use cases like energy communities for running simulations.
+To cope with the challenge of data sharing, Dataspace approaches like the IDS Reference Architecture Model (IDS RAM) were introduced to not only solve the technical aspects of data sharing,
 but also to establish methods for data sovereignty so that dataspace participants can determine themselves how and when others can make use of their data.
 
-For making use of shared data, interoperability is a crucial factor. 
-While syntactic data exchange is well covered by clearly defined data formats, there is still the open challenge of semantic interoperability [@woutervandenbergSemanticInteroperabilityData2024]. 
-IDS RAM is firmly based on semantic metadata for all aspects and actors of a dataspace. 
+For making use of shared data, interoperability is a crucial factor.
+While syntactic data exchange is well covered by clearly defined data formats, there is still the open challenge of semantic interoperability [@woutervandenbergSemanticInteroperabilityData2024].
+IDS RAM is firmly based on semantic metadata for all aspects and actors of a dataspace.
 Furthermore, it can leverage semantic interoperability approaches through the Vocabulary Hub [@IDSARAMVocabulary2024]
 that stores ontologies and semantic thesauri for data descriptions and can dereference URIs to provide semantic details of data assets.
 
-In this paper, we present our proposal for a technological solution of an IDS Vocabulary Hub 
-built on the integration of the GraphDB semantic graph database and PoolParty Semantic Suite. 
-We not only cover the core Vocabulary Hub functionalities and responsibilities in a dataspace, 
-but also extend the idea towards a Semantic Layer for dataspaces, 
-which provides even more services to easily and semi-automatically manage semantic interoperability. 
-Thus we raise the role of the Vocabulary Hub [@stornebrinkmichielVocabularyHubSemantic2023] to not only store semantic assets, 
-but also to bind semantic descriptions dynamically to incoming data, 
+In this paper, we present our proposal for a technological solution of an IDS Vocabulary Hub
+built on the integration of the GraphDB semantic graph database and PoolParty Semantic Suite.
+We not only cover the core Vocabulary Hub functionalities and responsibilities in a dataspace,
+but also extend the idea towards a Semantic Layer for dataspaces,
+which provides even more services to easily and semi-automatically manage semantic interoperability.
+Thus we raise the role of the Vocabulary Hub [@stornebrinkmichielVocabularyHubSemantic2023] to not only store semantic assets,
+but also to bind semantic descriptions dynamically to incoming data,
 therefore enabling richer discovery and semantic data integration between datasets.
 
 # Projects and Use Cases
-In the expanding data economy landscape supported by dataspaces, 
-we are working on several projects which address practical data sharing needs and where we experience the importance of semantic interoperability to fulfill various use cases. 
-Our solution is developed with main focus on the [UNDERPIN](https://underpinproject.eu/) project with use cases of refineries and wind farms, 
+In the expanding data economy landscape supported by dataspaces,
+we are working on several projects which address practical data sharing needs and where we experience the importance of semantic interoperability to fulfill various use cases.
+Our solution is developed with main focus on the [UNDERPIN](https://underpinproject.eu/) project with use cases of refineries and wind farms,
 but other projects, such as [DataBri-X](https://databri-x.eu/) provide use cases which were considered.
 
 ## Manufacturing/Maintenance Dataspace
-Operating refineries and wind farms involves high maintenance costs. 
-Predicting potential failures and optimizing the maintenance operations to minimize the costs can be business-critical. 
-For establishing predictive maintenance, we need large amounts of high quality training data 
+Operating refineries and wind farms involves high maintenance costs.
+Predicting potential failures and optimizing the maintenance operations to minimize the costs can be business-critical.
+For establishing predictive maintenance, we need large amounts of high quality training data
 that can be obtained by data consolidation across different refinery and wind farm measurement sources.
 
-The UNDERPIN project addresses this problem by creating a dataspace for European manufacturers in the refinery and renewable energy domains and various SMEs across their value-chain ecosystem, such as equipment suppliers. 
-Extensive time series data is exchanged, but their format and meaning is not standardized. 
-Describing the meaning of these time series facilitates semantic interoperability between datasets from different providers. 
-This description includes measured variable, quantity kind and unit of measure, 
+The UNDERPIN project addresses this problem by creating a dataspace for European manufacturers in the refinery and renewable energy domains and various SMEs across their value-chain ecosystem, such as equipment suppliers.
+Extensive time series data is exchanged, but their format and meaning is not standardized.
+Describing the meaning of these time series facilitates semantic interoperability between datasets from different providers.
+This description includes measured variable, quantity kind and unit of measure,
 which sensor took the measurements, what it is attached to, the detailed model and connectivity of that industrial equipment.
 
 ### The Refinery Dataspace
-Refineries can be optimized regarding costs and efficiency by considering not only individual components, 
-but the production chain as a connected system. 
-In this use case, we aim to improve the maintenance process as well as the decision making for preventive maintenance 
+Refineries can be optimized regarding costs and efficiency by considering not only individual components,
+but the production chain as a connected system.
+In this use case, we aim to improve the maintenance process as well as the decision making for preventive maintenance
 so as to minimize the downtime and the impact on the production capabilities.
 
 ### The Wind Farm Dataspace
-Operating wind farms involves high costs for maintaining the wind turbines. 
-Predicting potential failures and optimizing the maintenance operations to minimize the costs can be business critical. 
-For establishing predictive maintenance, we need large amounts of high qualitative training data, 
-which can be achieved by consolidating different wind farm measurement sources. 
+Operating wind farms involves high costs for maintaining the wind turbines.
+Predicting potential failures and optimizing the maintenance operations to minimize the costs can be business critical.
+For establishing predictive maintenance, we need large amounts of high qualitative training data,
+which can be achieved by consolidating different wind farm measurement sources.
 This use case provides different kinds of tabular data, where consolidation needs semantic harmonization of data.
 
 ## Energy and Legal Dataspace
-Beyond the UNDERPIN project as the main use case provider, we also consider use cases from other projects. 
-We present 2 examples from the DataBri-X project, which work on different content types of data and have different usage scenarios. 
+Beyond the UNDERPIN project as the main use case provider, we also consider use cases from other projects.
+We present 2 examples from the DataBri-X project, which work on different content types of data and have different usage scenarios.
 We considered these as well when designing our solution to make it applicable to a broader range of use cases.
 
 ### The Energy Dataspace
-In this use case, we run simulations for energy communities, which predict the behavior of the energy grid. 
-To provide precise predictions, there is the need of high amounts of example data. 
+In this use case, we run simulations for energy communities, which predict the behavior of the energy grid.
+To provide precise predictions, there is the need of high amounts of example data.
 This data is of numeric type and different tabular data sources need to be semantically consolidated.
 
 ### The Legal Dataspace
-Analyzing documents in the legal domain is a highly challenging task because of the complexity of legal information. 
-We provide recommender services for insights into corpora of legal documents 
+Analyzing documents in the legal domain is a highly challenging task because of the complexity of legal information.
+We provide recommender services for insights into corpora of legal documents
 that identify the meaning via a legal knowledge graph, NLP analysis and semantic annotations.
 
 ## The Problem
-"Standard" dataspace solutions provide access to data and metadata descriptions, but they do not typically address the data integration problem. 
-If a consumer wants to consume datasets from different providers in an integrated way, 
-they need to harmonize the data to some common model, convert it, store it in a database, 
+"Standard" dataspace solutions provide access to data and metadata descriptions, but they do not typically address the data integration problem.
+If a consumer wants to consume datasets from different providers in an integrated way,
+they need to harmonize the data to some common model, convert it, store it in a database,
 and potentially implement entity linking (correlation of different records that are about the same real-world thing) and data fusion.
 
-Above we gave just 4 examples to illustrate the heterogeneity of data in the context of different use cases. 
-We aim to develop solutions that not only fulfill the dataspace needs, 
+Above we gave just 4 examples to illustrate the heterogeneity of data in the context of different use cases.
+We aim to develop solutions that not only fulfill the dataspace needs,
 but also improve the situation regarding semantic interoperability by providing services that can be easily leveraged to implement such use cases.
 
 # Approach and IT-Solution
-To tackle this problem, we introduce Semantic Web standards and technologies to model and process data. 
-Vocabularies and ontologies (expressed using RDFS, OWL and SKOS) can represent data with a clear semantics based on standards. 
+To tackle this problem, we introduce Semantic Web standards and technologies to model and process data.
+Vocabularies and ontologies (expressed using RDFS, OWL and SKOS) can represent data with a clear semantics based on standards.
 We leverage GraphDB and PoolParty as two software components that implement these standards to process the data.
 
 ## IDS Vocabulary Hub
-In this paper, we focus on the IDSA approach to dataspaces. 
-IDSA defines the architecture of dataspaces in the reference architecture model IDS RAM (current version 4). 
-One of the defined architectural components, the Vocabulary Hub, has the role of providing vocabularies to annotate and describe data assets and services. 
-These vocabularies form a common language to enable semantic interoperability among the dataspace participants. 
-The Vocabulary Hub is responsible for resolving annotations of data assets and for providing details in the form of standardized semantic descriptions. 
-It supports the use of Semantic Web standards for defining and representing RDF vocabularies and ontologies 
+IDSA defines the dataspace architecture in the IDS RAM [@IDSRAM2024].
+The Vocabulary Hub is one of the defined architectural components that provides vocabularies to annotate and describe data assets and services.
+These vocabularies form a common language to enable semantic interoperability among dataspace participants.
+The Vocabulary Hub is responsible for resolving annotations of data assets and for providing details in the form of standardized semantic descriptions.
+It supports the use of Semantic Web standards for defining and representing RDF vocabularies and ontologies
 and thereby provides semantic interoperability in a standardized and machine-readable way.
 
-The Vocabulary Hub is one of the core components of any dataspace not only those designed in accordance with IDS RAM. 
-Other reference architecture models, such as GAIA-X architecture document 22.10 Release [@GaiaXArchitectureDocument2022] and Fraunhofer's Reference Architecture Model for the Industrial Data Space [@ReferenceArhictectureModel2017] also describe components with a similar role - the Federated Catalogue and Broker Service, respectively. 
-Therefore, our approach designed around the IDS RAM is adaptable and applicable to data spaces designed in accordance with other reference architecture models.
+Other architecture reference models, such as the GAIA-X Architecture [@GaiaXArchitectureDocument2022] 
+describe components with a similar role: the Federated Catalogue and Broker Service.
+Therefore our approach  is adaptable and applicable to dataspaces designed in accordance with other reference architecture models as well.
 
 ## GraphDB Graph Database
-Ontotext GraphDB is a highly efficient, scalable and robust graph database with RDF and SPARQL support.
-It also offers data virtualization capabilities which enable direct access using SPARQL to relational databases, eliminating the need to replicate data.
-It can perform semantic inferencing at scale, which enables deriving new semantic facts from existing facts. 
+[Ontotext GraphDB](https://graphdb.ontotext.com/) is a highly efficient, scalable and robust graph database with RDF and SPARQL support.
+It also offers data virtualization capabilities that enable direct SPARQL access to relational databases, eliminating the need to replicate data.
+It can perform semantic reasoning at scale and supports both incremental inference when triples are inserted, and retraction when triples are deleted.
+GraphDB handles massive semantic data loads, queries, and inferencing.
+Reasoning and query evaluation are performed over a persistent storage layer. 
+According to the [LDBC Semantic Publishing Benchmark](https://ldbcouncil.org/benchmarks/spb/), GraphDB is one of the most scalable OWL repositories currently available.
 
-GraphDB handles massive loads, queries, and inferencing in real time.
-Reasoning and query evaluation are performed over a persistent storage layer. Loading, reasoning, and query evaluation are executed extremely fast even against huge ontologies and knowledge bases.
-According to the [LDBC Semantic Publishing Benchmark](https://ldbcouncil.org/benchmarks/spb/), it is one of the most scalable OWL repositories currently available.
+In addition to numerous commercial projects, 
+GraphDB has been used for a variety of research projects, from astronomy to zoology [@alexievDiverseUsesSemantic2021].
 
 ## PoolParty Semantic Suite
-PoolParty Semantic Suite is a semantic middleware platform based on W3C standards, specifically the Semantic Web, which provides a wide variety of functionality in the area of knowledge graph management, graph-based NLP, semantic search and recommender systems.
+[PoolParty Semantic Suite](PoolParty Semantic Suite) is a semantic middleware platform based on W3C Semantic Web standards 
+that provides a wide variety of functionality in the area of knowledge graph management, graph-based NLP, semantic search and recommender systems.
 
-At the core of PoolParty is the Thesaurus Manager, which can be used to create and maintain RDF-based vocabularies, including ontologies, schemas and different kinds of knowledge models. These vocabularies can be applied for various use cases, from bridging data silos in enterprises by implementing data consolidation via the vocabularies, to annotating documents with semantic annotations to implement semantic search and recommendations which provide insights into data.
+At the core of PoolParty is the Thesaurus Manager that is used to create and maintain RDF-based vocabularies (thesauri and ontologies), 
+schemas and different kinds of knowledge models. 
+These vocabularies can be applied for various use cases, 
+from bridging data silos in enterprises by implementing data consolidation via the vocabularies, 
+to annotating documents with semantic annotations to implement semantic search and recommendations which provide insights into data.
 
-PoolParty is well suited to form the basis of a vocabulary management system within a dataspace, 
-effectively implementing not only the Vocabulary Hub role, 
+PoolParty is well suited to form the basis of a vocabulary management system within a dataspace,
+effectively implementing not only the Vocabulary Hub role,
 but also providing additional services that improve the expressiveness of common vocabularies and automate semantic interoperability.
 
 ## The GraphDB Poolparty Integration
-The integration of GraphDB and PoolParty leverages synergies of a high-performance graph database with a platform for knowledge graph management.
+The integration of GraphDB and PoolParty leverages synergies of a high-performance graph database with a knowledge graph management platform.
 
-Both GraphDB and PoolParty are based on W3C recommendations like RDF, OWL and SPARQL. They therefore seamlessly integrate with each other, but also with other services and components in dataspaces which support these machine-readable standards for semantic interoperability.
+Both GraphDB and PoolParty are based on W3C recommendations (RDF, RDFS, OWL, SPARQL etc). 
+They therefore seamlessly integrate with each other, but also with other services and components in dataspaces which support these machine-readable standards for semantic interoperability.
 
 # A Semantic Solution and its Benefits
-When harmonizing data, we need to provide a method to automatically map and process it, 
-so this can be done efficiently on large datasets and/or regular updates in dataspaces. 
+When harmonizing data, we need to provide a method to automatically map and process it,
+so this can be done efficiently on large datasets and/or regular updates in dataspaces.
 The benefit provided should support the ML training in such a way that the consolidated dataset is exposed as a uniform training dataset.
 
 ## Semantic Layer Approach
-The Vocabulary Hub, as IDS defines it in the IDS RAM, is a basic building block to achieve semantic interoperability in dataspaces by provisioning common vocabularies. 
-Those vocabularies are to be expressed in RDF and by syntactically compatible with OWL to allow for expressive semantics. 
-The IDS RAM does not require, but nonetheless allows for, extending the function of the Vocabulary hub towards providing ontology mappings [@FunctionalLayerIDSRAM2023b], which would enable dataspace connectors to automatically convert data between user-specific and standard data formats. Such automatic conversions are to be performed by Data Tranformation Apps by either the Data Consumers, the Data Providers, or both.
 
-We aim to achieve this through a Semantic Layer for dataspaces, 
-which provides vocabulary-based services for advanced and automated semantic descriptions of metadata and data. 
+The Vocabulary Hub is defined in the IDS RAM as a basic building block to achieve semantic interoperability in dataspaces by provisioning common vocabularies.
+Vocabularies are expressed in RDF and use RDFS and OWL for ontologies, and SKOS for thesauri.
+The IDS RAM does not require, but nonetheless allows extending the function of the Vocabulary Hub towards providing ontology mappings [@IDSARAMFunctional2023]
+that enable dataspace connectors to automatically convert data between user-specific and standard data formats.
+Such automatic conversions can be performed by Data Tranformation Apps by the Data Consumer, the Data Provider, or both.
+
+We aim to achieve this through a Semantic Layer for dataspaces
+that provides vocabulary-based services for advanced and automated semantic description of metadata and data.
 The Semantic Layer is implemented as services based on the GraphDB and PoolParty and provided as a one seamlessly integrated component.
 
-In the following, we discuss 
-
-i) the services provided for the Vocabulary Hub component and 
+In the following, we discuss
+i) the services provided for the Vocabulary Hub component and
 ii) additional services as Vocabulary Hub extensions that implement a Semantic Layer for dataspaces.
 
 Vocabulary Hub Services:
 
 - RDF based: both GraphDB and PoolParty store and manage data based on the RDF data model. RDF is the basic building stone and underlying vocabulary definitions.
 - Scalable vocabulary storage: cluster implementation for higher throughput and a fault tolerant architecture.
-- Knowledge graph management: easy management of vocabularies using a rich web user interface and integration via Web APIs. 
+- Knowledge graph management: easy management of vocabularies using a rich web user interface and integration via Web APIs.
   Vocabularies can be created and edited based on standards like RDFS, OWL and SKOS, and existing vocabularies can be reused and combined to fit specific dataspace needs.
 - SPARQL service for semantic lookups: dereference URIs describing data assets to retrieve a semantic description of the entity from the graph database.
 
 Semantic Layer Services support both unstructured and structured data assets:
 
-- Unstructured data: semantic annotation services for documents based on concept tagging. 
-  PoolParty’s KG-based NLP primarily uses SKOS taxonomies to identify concepts in documents, 
+- Unstructured data: semantic annotation services for documents based on concept tagging.
+  PoolParty’s KG-based NLP primarily uses SKOS taxonomies to identify concepts in documents,
   but can be extended with OWL ontology elements (classes, properties) for increased expressiveness.
 - Structured data: we support structured data harmonization methods, including semantic mapping and linking SKOS concepts
-  - Ontology-Based Data Access (OBDA) is used for virtualization of relational data, i.e. accessing relational data as semantic data. 
-    It is well suited for semantic querying of large amounts of data, while keeping the original relational data in place (NoETL approach). 
-    Ontologies are leveraged to construct the OBDA mapping; 
-    they are governed via the Semantic Layer and can harmonize data assets of various formats using a precise mapping [@andreselAdaptingOntologybasedData2024]. 
+  - Ontology-Based Data Access (OBDA) is used for virtualization of relational data, i.e. accessing relational data as semantic data.
+    It is well suited for semantic querying of large amounts of data, while keeping the original relational data in place (NoETL approach).
+    Ontologies are leveraged to construct the OBDA mapping;
+    they are governed via the Semantic Layer and can harmonize data assets of various formats using a precise mapping [@andreselAdaptingOntologybasedData2024].
     Furthermore, it can be used to establish a fine-grained access control, thereby deciding for individual data elements if they should be exposed ot not.
   - RDB to RDF Mapping Language (R2RML) [@souripriyadasR2RMLRDBRDF2012]
     and RDF Mapping Language (RML) [@RMLIntroduction2024]
-    are intended for data transformation processes within a dataspace, 
+    are intended for data transformation processes within a dataspace,
     where the original source is used as a basis to create an RDF representation (ETL approach).
-  - GraphDB supports both OBDA and R2RML through its integration of ONTOP [@bagosiOntopFrameworkOntology2014]. 
+  - GraphDB supports both OBDA and R2RML through its integration of ONTOP [@bagosiOntopFrameworkOntology2014].
     The same mappings can be used for NoETL virtual data access, or for ETL (to materialize the semantic data).
-  - CSV on the Web (CSVW) [@swirrlCSVWStandards2024] is a set of W3C standards 
+  - CSV on the Web (CSVW) [@swirrlCSVWStandards2024] is a set of W3C standards
     that allow detailed semantic description of tabular data using a JSON "manifest" file.
-  - SKOS concepts are used for structured data in several ways. 
-    Concepts can be directly added to RDF data via semantic links (properties from an ontology), 
-    they can be used to annotate specific literals of an RDF graph, 
+  - SKOS concepts are used for structured data in several ways.
+    Concepts can be directly added to RDF data via semantic links (properties from an ontology),
+    they can be used to annotate specific literals of an RDF graph,
     or they can be used to associate documents with (specific parts of) an RDF graph.
-- Inference services: we provide metadata expansion services based on interlinked vocabularies in combination with ontologies. 
+- Inference services: we provide metadata expansion services based on interlinked vocabularies in combination with ontologies.
   This inference approach can be used with semantic tagging for unstructured data, as well as the structured data approaches.
-  - Inference tagging is provided by a PoolParty tagging service in combination with an expansion query for implementing the inference. 
+  - Inference tagging is provided by a PoolParty tagging service in combination with an expansion query for implementing the inference.
     The query can be configured to work for various scenarios.
 - Vocabulary crosswalks are a data modeling approach using interlinks to relate:
-  - Different vocabularies from similar or the same domain that cover different areas or aspects of the domain. 
+  - Different vocabularies from similar or the same domain that cover different areas or aspects of the domain.
     By relating concepts with each other using 1:1, 1:n and m:n relations, we can automatically expand queries and annotations by traversing the interlinked graph.
   - Different versions of the same vocabulary to automatically translate between those versions.
-- Metadata inference based on interlinked vocabularies is similar to crosswalks, 
-  but intended to represent different levels of abstraction, 
-  so that we are able to infer from a more general vocabulary to a more specific vocabulary and vice versa. 
+- Metadata inference based on interlinked vocabularies is similar to crosswalks,
+  but intended to represent different levels of abstraction,
+  so that we are able to infer from a more general vocabulary to a more specific vocabulary and vice versa.
   For example, we can start with DCAT themes vocabularies and link to further vocabularies, which are more specific for certain areas or which go into more detail.
 
 ## Software Architecture
@@ -243,35 +259,36 @@ The following figure shows the architecture of our approach:
 
 ![](img/architecture.png)
 
-- A Data Provider sends data through the Connector, 
+- A Data Provider sends data through the Connector,
   and at the same time provides basic metadata (DCAT)
-- Selected data can be stored in Database(s) managed by the dataspace, 
+- Selected data can be stored in Database(s) managed by the dataspace,
   for easier access and querying.
   - For large-volume time series data, we recommend to use InfluxDB, PostgreSQL, Google BigQuery, etc.
-  - Of course, access control is very important here. 
-    We'll leverage GraphDB's [Fine-grained Access Control](https://graphdb.ontotext.com/documentation/10.6/fine-grained-access-control.html), 
+  - Of course, access control is very important here.
+    We'll leverage GraphDB's [Fine-grained Access Control](https://graphdb.ontotext.com/documentation/10.6/fine-grained-access-control.html),
     but access control in the time series database is also important.
-  - Depending on Provider preferences and agreements, 
-    other data may stay at the source, 
+  - Depending on Provider preferences and agreements,
+    other data may stay at the source,
     and be delivered to the Consumer only dynamically through the Connector.
-- The Vocabulary Hub stores relevant semantic assets: ontologies and thesauri. 
+- The Vocabulary Hub stores relevant semantic assets: ontologies and thesauri.
   These are added based on relevant use cases and datasets, following a dataspace governance process.
 - The Vocabulary Hub also stores mapping assets, such as OBDA or R2RML mappings and CSVW manifests.
-- PoolParty Semantic Integrator is used to edit, view and manage the semantic assets, 
+- PoolParty Semantic Integrator is used to edit, view and manage the semantic assets,
   and to bind mapping assets to incoming data.
-- For virtual access to relational data, ONTOP is used to translate SPARQL to SQL dynamically 
+- For virtual access to relational data, ONTOP is used to translate SPARQL to SQL dynamically
   and to convert returned data to SPARQL result format.
-- The Data Consumer benefits from:
-  - More powerful dataset discovery by using richer semantic queries, e.g.
-    - "Give me all time series related to compressor C123" (equipment instance)
-    - "Give me all time series related to temperature" (measured quantity)
-    - "Give me all time series of bearings" (equipment kind or machine part)
-  - Harmonized querying of datasets from multiple providers.
+
+The Data Consumer benefits from:
+- More powerful dataset discovery by using richer semantic queries, e.g.
+  - "Give me all time series related to compressor C123" (equipment instance)
+  - "Give me all time series related to temperature" (measured quantity)
+  - "Give me all time series of bearings" (equipment kind or machine part)
+- Harmonized querying of datasets from multiple providers.
 
 # Conclusion and Future Work
-We presented an approach for dynamically binding datasets to semantic descriptions in a dataspace's Vocabulary Hub, 
-therefore facilitating data harmonization and easier data consumption. 
-We have implemented a first prototype of our approach, which builds on the integration of GraphDB and PoolParty. 
+We presented an approach for dynamically binding datasets to semantic descriptions in a dataspace's Vocabulary Hub,
+therefore facilitating data harmonization and easier data consumption.
+We have implemented a first prototype of our approach, which builds on the integration of GraphDB and PoolParty.
 As next steps, we will bring this solution into use cases and into broader discussion to gain insight and develop it further.
 
 The next steps include:
