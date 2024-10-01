@@ -5,22 +5,15 @@ date: 01-Oct-2024
 subtitle: "3rd Workshop on Semantic Interoperability in Data Spaces"
 format: revealjs
 metadata-files:
-  - ../_metadata.yml
+  - _metadata.yml
 ---
-# Acknowledgements
-<div class="centered-text">
-<img src="img/swc-logo-web.svg" width="45%">
-
-<img src="img/Ontotext-Logo-vector.svg" width="45%">
-
-<img src="img/underpin_logo_horizontal_icon_title_tagline_color_light_bg.svg" width="45%">
 
 # Introduction
 
-- the european data economy depends on the availability of data 
-- technological foundation + services and tools to make use of it
-- different industries and communities
-- machine-learning systems need high-quality training data
+- The European data economy depends on the availability of data 
+- Technological foundation + services and tools to make use of it
+- Different industries and communities
+- Machine-learning systems need high-quality training data
     - predictive maintenance
 
 Data space standards, like IDS, provide 
@@ -28,9 +21,9 @@ Data space standards, like IDS, provide
 
 # Motivation
 
-- interoperability is key for making use of shared data
-- syntactic data exchange already solved, I.e. defined data formats and exchange standards
-- semantic interoperability still an open challenge
+- Interoperability is key for making use of shared data
+- Syntactic data exchange already solved, I.e. defined data formats and exchange standards
+- Semantic interoperability still an open challenge
 - Starting point: IDS RAM and IM defines semantic metadata
 - we need to extend it to cover **semantic interoperability for data**
 
@@ -39,40 +32,54 @@ Data space standards, like IDS, provide
     - based on IDS Vocabulary Hub
     - based on knowledge graph (KG) technologies
     - implemented by **GraphDB + PoolParty** products
-- services + data for semantic interoperability
+- Services + data for semantic interoperability
 - data discovery & harmonisation
-- semantic metadata + data for discovery and integration
+- Semantic metadata + data for discovery and integration
 
 # Use Cases
-2 running projects:
-DataBri-X
+Two running projects:
+
+**DataBri-X**
+
 - energy community simulation and prediction
 - legal knowledge graph + document analysis
 
-UNDERPIN
+**UNDERPIN**
+
 - refinery predictive maintenance
 - wind farms predictive maintenance
 
 # Approach
 
 Semantic Layer supports structured and unstructured data interlinked in the KG.
-Structured
-- Ontology-Based Data Access (OBDA)
-- RDB to RDF Mapping Language (R2RML)
+
+**Structured**
+
+::::{.columns}
+::: {.column width="40%"}
+- Ontology-Based Data Access
+- RDB to RDF Mapping Language
 - CSV on the Web (CSVW)
+:::
+::: {.column width="60%"}
+![](./img/skos.png){width=15%}
+![](./img/r2rml.png){width=15%}
+![](./img/csv.png){width=15%}
+:::
+::::
 
-Unstructured
-- semantic document annotations via KG entities
+**Unstructured**
 
+- Semantic document annotations via KG entities
 
 # Approach
 
 Semantic Layer supports inference services.
 
-- reasoning based on W3C recommendations OWL & SHACL
-- inference tagging expands semantic annotations in documents
-- vocabulary crosswalks connect different similar vocabularies
-- metadata inference to determine specific vocabularies for domains
+- Reasoning based on W3C recommendations OWL & SHACL
+- Inference tagging expands semantic annotations in documents
+- Vocabulary crosswalks connect different similar vocabularies
+- Metadata inference to determine specific vocabularies for domains
 
 # Integration Architecture
 <div class="centered-text">
@@ -80,11 +87,11 @@ Semantic Layer supports inference services.
 
 # Data Consumer Benefits
 
-- harmonized and semantically integrated data from disparate providers
-- richer metadata descriptions
-- incoming data bound dynamically to semantic descriptions
-- richer discoverability / easier data querying
-- vocabulary crosswalks: expand queries and annotations by traversing the interlinked graph
+- Harmonized and semantically integrated data from disparate providers
+- Richer metadata descriptions
+- Incoming data bound dynamically to semantic descriptions
+- Richer discoverability / easier data querying
+- Vocabulary crosswalks: expand queries and annotations by traversing the interlinked graph
 
 # Summary and Future Work
 
@@ -92,7 +99,7 @@ A Semantic Layer enchances the Vocabulary Hub's role by interlinking structured 
 This improves the discoverability and comprehensibility of said data.
 
 
-***Future work:***
+**Future work:**
 
 - Implement use cases for richer discoverability, harmonized querying and support for different content types.
 - Explore how ML can benefit regarding quality in practice when providing consolidated and cleaned data via dataspaces.

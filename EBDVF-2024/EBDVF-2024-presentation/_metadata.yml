@@ -3,32 +3,45 @@ format:
   revealjs: 
     incremental: false
     slide-number: c/t
+#scss theme file must be local
     theme: ../../resources/ontotext.scss
-    logo: img/underpin_logo_horizontal_icon_title_tagline_color_light_bg.svg
+    logo:  img/underpin_logo_horizontal_icon_title_tagline_color_light_bg.svg
     embed-resources: false
     margin: 0
     width: 1600
     height: 900
-  #  background-image: ../../resources/bkg-blue.png
-    background-size: cover
-    background-opacity: 0.1
     transition: none
     code-copy: true
     code-line-numbers: true
     code-overflow: scroll
-    number-sections: true # show section numbers
-    number-offset: 0      # start from 1
-    scrollable: true # use if slides can be lenghty texts and tables
-    auto-stretch: false # does not work for big images within custom dvs (tables, columns)
+#show section numbers
+    number-sections: false
+#start from 1
+    number-offset: 0
+#keep it uncommented if slides will be mostly lenghty texts and tables
+    scrollable: true
+#auto-stretch: disallow stretching of images, as it does not work for big images within custom dvs (tables, columns)
+    auto-stretch: true
     include-in-header:
+#      text: |
+#        <script src="https://presentations.ontotext.com/css/onto-style.html"></script>
+# two rows above are written following the discussion at https://github.com/quarto-dev/quarto-cli/discussions/6854
+#    - file: "https://presentations.ontotext.com/css/onto-style.html"
     - file: ../../resources/quarto-revealjs-defaults.html
-    include-after-body: 
+    include-after-body:
+#      text: |
+#        <script src="https://presentations.ontotext.com/css/onto-title.html"></script>
+# two rows above are written following the discussion at https://github.com/quarto-dev/quarto-cli/discussions/6854
+#    - file: "https://presentations.ontotext.com/css/onto-title.html"
     - file: ../../resources/quarto-revealjs-title-slide.html
     menu:
       side: left
- #   title-slide-attributes:
- #       data-background-image: ../../resources/bkg-blue.jpg
-#filters:
-#  - reveal-header # if you need both header and footer on slides. They are declared in the presentation.qmd file
+    title-slide-attributes:
+        data-background-image: ./img/EBDVF-2024-presentation-title-background.png
+        data-background-size: 100%
+        data-background-opacity: "1"
 
+#use reveal-header extension if you need both header and footer on slides. They are declared in the presentation.qmd file
+#filters:
+#  - reveal-header
     
